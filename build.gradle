@@ -19,15 +19,19 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // lombok
     compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // spring boot web
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // spring boot devtools
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     // MongoDB spring boot starter
     implementation('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
     // Swagger 연동을 위한 spring doc open api
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.9'
+    // test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
