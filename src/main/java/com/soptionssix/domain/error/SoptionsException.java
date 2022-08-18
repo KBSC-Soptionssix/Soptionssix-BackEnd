@@ -31,4 +31,11 @@ public sealed class SoptionsException extends RuntimeException {
             super(ErrorCode.UNAUTHORIZED_EXPIRED_TOKEN, "Expired Token");
         }
     }
+
+    // http error status 404
+    public static final class NotFound extends SoptionsException {
+        public NotFound() {
+            super(ErrorCode.NOTFOUND, "Not Found");
+        }
+    }
 }
