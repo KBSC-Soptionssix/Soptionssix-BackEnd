@@ -12,10 +12,6 @@ on:
     branches: 
       - 'feat/*'
       - 'hotfix/*'
-  pull_request:
-    branches: 
-      - 'feat/*'
-      - 'hotfix/*'
 
 permissions:
   contents: read
