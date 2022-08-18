@@ -106,7 +106,6 @@ jobs:
         rm -f ~/.gradle/caches/modules-2/gc.properties
 
   build:
-    needs: [checkstyle, test]
     runs-on: ubuntu-latest
 
     steps:
