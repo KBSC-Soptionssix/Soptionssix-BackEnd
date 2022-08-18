@@ -1,5 +1,9 @@
 package com.soptionssix.domain.error;
 
-public class UnauthenticatedException extends IllegalArgumentException {
+import com.soptionssix.domain.util.ErrorMessage;
 
+public class UnauthenticatedException extends IllegalArgumentException {
+    public UnauthenticatedException() {
+        super(ErrorMessage.UNAUTHENTICATED);
+    }
 }
