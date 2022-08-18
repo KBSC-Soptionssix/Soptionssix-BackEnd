@@ -2,8 +2,7 @@ package com.soptionssix.api.contoller;
 
 import com.soptionssix.api.dto.ErrorResponse;
 import com.soptionssix.api.dto.MockDto;
-import com.soptionssix.domain.error.ExpiredTokenException;
-import com.soptionssix.domain.error.UnauthenticatedException;
+import com.soptionssix.domain.error.SoptionsException;
 import com.soptionssix.domain.service.MockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,8 +32,8 @@ public class MockController {
             @PathVariable("id") String id
     ) {
         if (id.equals("error1")) {
-            throw new UnauthenticatedException();
+            throw new SoptionsException.Unauthenticated();
         }
-        throw new ExpiredTokenException();
+        throw new SoptionsException.ExpiredToken();
     }
 }
