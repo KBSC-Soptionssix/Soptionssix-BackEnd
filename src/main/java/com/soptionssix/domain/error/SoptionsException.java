@@ -38,4 +38,11 @@ public sealed class SoptionsException extends RuntimeException {
             super(ErrorCode.NOTFOUND, "Not Found");
         }
     }
+
+    // http error status 500
+    public static final class InternalServerError extends SoptionsException {
+        public InternalServerError(String message) {
+            super(ErrorCode.INTERNAL_SERVER_ERROR, message);
+        }
+    }
 }
