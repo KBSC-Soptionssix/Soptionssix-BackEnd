@@ -144,5 +144,5 @@ jobs:
         # uses: Ilshidur/action-discord@0c4b27844ba47cb1c7bee539c8eead5284ce9fa9
         env:
           DISCORD_WEBHOOK : ${{ secrets.DISCORD_WEBHOOK }}
-          DISCORD_EMBEDS : "[{\"title\":\"❌${{ github.repository }}의 ${{ github.event_name }}내용 확인이 필요합니다.\",\"color\":14177041,\"description\":\"dasf\"}]"
+          DISCORD_EMBEDS : "[{\"title\":\"❌${{ github.base_ref }} ${{ github.event_name }}내용 확인이 필요합니다.\",\"color\":14177041,\"description\":\"[${{ github.repository }}](https://github.com/KBSC-Soptionssix/Soptionssix-BackEnd)\"}]"
         uses: Ilshidur/action-discord@0.3.2
