@@ -1,5 +1,6 @@
 package com.soptionssix.api.contoller;
 
+import com.soptionssix.domain.error.ExpiredTokenException;
 import com.soptionssix.domain.error.UnauthenticatedException;
 import com.soptionssix.domain.util.ErrorMessage;
 import com.soptionssix.api.dto.ErrorResponse;
@@ -22,10 +23,20 @@ public final class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(UnauthenticatedException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public ErrorResponse handleUnauthenticatedError() {
         return new ErrorResponse(
                 ErrorStatus.UNAUTHORIZED_UNAUTHENTICATED,
                 ErrorMessage.UNAUTHENTICATED
+        );
+    }
+
+    @ExceptionHandler(ExpiredTokenException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ErrorResponse handleExpiredTokenError() {
+        return new ErrorResponse(
+                ErrorStatus.UNAUTHORIZED_EXPIRED_TOKEN,
+                ErrorMessage.EXPIRED_TOKEN
         );
     }
 
