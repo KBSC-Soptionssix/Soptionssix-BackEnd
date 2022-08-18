@@ -39,7 +39,7 @@ public final class GlobalExceptionHandler extends ResponseEntityExceptionHandler
             HttpStatus status,
             WebRequest request
     ) {
-        SoptionsException soptionsException = new SoptionsException(status.value(), ex.getMessage());
+        SoptionsException soptionsException = new SoptionsException(status.value() * 10, ex.getMessage());
         return this.responseErrorFormat(status, soptionsException);
     }
 
