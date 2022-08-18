@@ -15,6 +15,9 @@ on:
 
 permissions:
   contents: read
+  issues: read
+  checks: write
+  pull-requests: write
 
 jobs:
   build:
@@ -30,6 +33,16 @@ jobs:
         java-version: '17'
         distribution: 'zulu'
         
+    - name: Cache Gradle packages
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+        
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
@@ -38,15 +51,11 @@ jobs:
       
     - name: CheckStyleTest with Gradle
       run: ./gradlew checkstyleTest
-      
-    #- name: Build with Gradle # 실제 application build(-x 옵션을 통해 test는 제외)
-     # run: ./gradlew build -x test
-
-    #- name: Test with Gradle # test application build
-    #run: ./gradlew test
-
-    #- name: Publish Unit Test Results # test 후 result를 보기 위해 추가
-      #uses: EnricoMi/publish-unit-test-result-action@v1
-      #if: ${{ always() }} # test가 실패해도 report를 남기기 위해 설정
-      #with:
-       # files: build/test-results/**/*.xml
+        
+    - name: Cleanup Gradle Cache
+        # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
+        # Restoring these files from a GitHub Actions cache might cause problems for future builds.
+      if: ${{ always() }}
+      run: |
+        rm -f ~/.gradle/caches/modules-2/modules-2.lock
+        rm -f ~/.gradle/caches/modules-2/gc.properties
