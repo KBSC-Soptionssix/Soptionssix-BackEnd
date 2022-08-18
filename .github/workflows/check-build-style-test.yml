@@ -144,5 +144,5 @@ jobs:
         # uses: Ilshidur/action-discord@0c4b27844ba47cb1c7bee539c8eead5284ce9fa9
         env:
           DISCORD_WEBHOOK : ${{ secrets.DISCORD_WEBHOOK }}
-          DISCORD_EMBEDS : "[{\"title\":\"[${{ github.repository }}](${{github.repositoryUrl}})의 ${{ github.event_name }}내용 확인이 필요합니다.\",\"color\":14177041,\"description\":\"✏ **check code style** : ${{needs.checkstyle.result}} \n 🛠 **test** : ${{needs.test.result}}\n 📃 **build** : ${{needs.build.result}}\"}]"
+          DISCORD_EMBEDS : '[{\"title\":\"❌ ${{ github.repository }}의 ${{ github.event_name }}내용 확인이 필요합니다.\",\"color\":14177041,\"description\":\"dasf\"}]'
         uses: Ilshidur/action-discord@0.3.2
