@@ -1,5 +1,6 @@
 package com.soptionssix.api.contoller;
 
+import com.soptionssix.domain.error.UnauthenticatedException;
 import com.soptionssix.domain.util.ErrorMessage;
 import com.soptionssix.api.dto.ErrorResponse;
 import com.soptionssix.domain.util.ErrorStatus;
@@ -17,6 +18,14 @@ public final class GlobalExceptionHandler {
         return new ErrorResponse(
                 ErrorStatus.NOTFOUND,
                 ErrorMessage.NOT_FOUND
+        );
+    }
+
+    @ExceptionHandler(UnauthenticatedException.class)
+    public ErrorResponse handleUnauthenticatedError() {
+        return new ErrorResponse(
+                ErrorStatus.UNAUTHORIZED_UNAUTHENTICATED,
+                ErrorMessage.UNAUTHENTICATED
         );
     }
 
