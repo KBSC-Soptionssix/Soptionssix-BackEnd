@@ -29,7 +29,7 @@ dependencies {
     // spring boot devtools
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     // MongoDB spring boot starter
-    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     // Swagger 연동을 위한 spring doc open api
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.9'
     // test
