@@ -5,13 +5,13 @@ import com.soptionssix.data.document.MockDocument;
 import com.soptionssix.data.mapper.MockDtoMapper;
 import com.soptionssix.data.repository.MockRepository;
 import com.soptionssix.domain.service.MockService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class RemoteMockService implements MockService {
+
     private final MockRepository mockRepository;
 
     @Autowired

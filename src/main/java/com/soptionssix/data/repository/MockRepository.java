@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MockRepository extends MongoRepository<MockDocument, String> {
+
 }

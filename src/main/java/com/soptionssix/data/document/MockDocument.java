@@ -9,8 +9,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 public final class MockDocument {
+
     @Id
-    private String _id;
+    private String id;
     private String type;
     private String value;
 }
