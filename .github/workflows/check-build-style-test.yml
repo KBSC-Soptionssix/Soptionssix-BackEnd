@@ -87,12 +87,6 @@ jobs:
         
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-      
-    - name: CheckStyleMain with Gradle
-      run: ./gradlew checkstyleMain
-      
-    - name: CheckStyleTest with Gradle
-      run: ./gradlew checkstyleTest
 
     - name: Test with Gradle # test application build
       run: ./gradlew test
@@ -110,9 +104,6 @@ jobs:
       run: |
         rm -f ~/.gradle/caches/modules-2/modules-2.lock
         rm -f ~/.gradle/caches/modules-2/gc.properties
-        
-    - name: Build with Gradle # 실제 application build(-x 옵션을 통해 test는 제외)
-      run: ./gradlew build -x test
 
   build:
     needs: [checkstyle, test]
