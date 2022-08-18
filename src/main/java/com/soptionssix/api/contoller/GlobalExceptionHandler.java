@@ -5,14 +5,17 @@ import com.soptionssix.domain.error.UnauthenticatedException;
 import com.soptionssix.domain.util.ErrorMessage;
 import com.soptionssix.api.dto.ErrorResponse;
 import com.soptionssix.domain.util.ErrorStatus;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @RestControllerAdvice
-public final class GlobalExceptionHandler {
+@Slf4j
+public final class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse handleNotFoundUriError() {
@@ -42,7 +45,8 @@ public final class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ErrorResponse handleInternalServerError() {
+    public ErrorResponse handleInternalServerError(final Exception exception) {
+        log.warn("Internal Error log", exception);
         return new ErrorResponse(
                 ErrorStatus.INTERNAL_SERVER_ERROR,
                 ErrorMessage.INTERNAL_SERVER_ERROR
