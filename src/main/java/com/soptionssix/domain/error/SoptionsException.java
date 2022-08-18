@@ -14,16 +14,8 @@ public sealed class SoptionsException extends RuntimeException {
 
     // http error status 400
     public static final class BadRequest extends SoptionsException {
-        public BadRequest(int errorCode, String message) {
-            super(errorCode, message);
-        }
-
         public BadRequest(String message) {
-            this(ErrorCode.BAD_REQUEST, "Bad Request");
-        }
-
-        public BadRequest() {
-            this("Bad Request");
+            super(ErrorCode.BAD_REQUEST, message);
         }
     }
 
