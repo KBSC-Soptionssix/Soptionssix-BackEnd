@@ -136,7 +136,7 @@ jobs:
         uses: Ilshidur/action-discord@0.3.2
         with:
         # The message to display in the Discord message.
-          args: "❌ ${{ github.repository }}의 ${{ github.evnet_name }}내용 확인이 필요합니다.\n ✏ check code style : ${{needs.checkstyle.result}} \n 🛠 test : ${{needs.test.result}}\n 📃 build : ${{needs.build.result}}"
+          args: "❌ ${{ github.repository }}의 ${{ github.event_name }}내용 확인이 필요합니다.\n ✏ check code style : ${{needs.checkstyle.result}} \n 🛠 test : ${{needs.test.result}}\n 📃 build : ${{needs.build.result}}"
           
       - name: Success Actions for Discord
         if: ${{ needs.checkstyle.result == 'success' && needs.test.result == 'success' && needs.build.result == 'success' }}
@@ -147,4 +147,4 @@ jobs:
         uses: Ilshidur/action-discord@0.3.2
         with:
         # The message to display in the Discord message.
-          args: "❌ ${{ github.repository }}의 ${{ github.evnet_name }}내용 확인이 필요합니다.\n ✏ check code style : ${{needs.checkstyle.result}} \n 🛠 test : ${{needs.test.result}}\n 📃 build : ${{needs.build.result}}"
+          args: "❌ ${{ github.repository }}의 ${{ github.event_name }}내용 확인이 필요합니다.\n ✏ check code style : ${{needs.checkstyle.result}} \n 🛠 test : ${{needs.test.result}}\n 📃 build : ${{needs.build.result}}"
