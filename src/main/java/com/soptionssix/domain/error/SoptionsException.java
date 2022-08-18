@@ -26,4 +26,17 @@ public sealed class SoptionsException extends RuntimeException {
             this("Bad Request");
         }
     }
+
+    // http error status 401
+    public static final class Unauthenticated extends SoptionsException {
+        public Unauthenticated() {
+            super(ErrorCode.UNAUTHORIZED_UNAUTHENTICATED, "Unauthenticated");
+        }
+    }
+
+    public static final class ExpiredToken extends SoptionsException {
+        public ExpiredToken() {
+            super(ErrorCode.UNAUTHORIZED_EXPIRED_TOKEN, "Expired Token");
+        }
+    }
 }
