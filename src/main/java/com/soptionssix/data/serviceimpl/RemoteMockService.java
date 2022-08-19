@@ -35,4 +35,13 @@ public class RemoteMockService implements MockService {
     public List<ReferenceDocument> getAllRef() {
         return referenceRepository.findAll();
     }
+
+    @Override
+    public ReferenceDocument saveRef() {
+        MockDocument mock = new MockDocument("string", "hello");
+        MockDocument mockDocument = this.mockRepository.save(mock);
+
+        ReferenceDocument ref = new ReferenceDocument("newMock", mockDocument);
+        return this.referenceRepository.save(ref);
+    }
 }

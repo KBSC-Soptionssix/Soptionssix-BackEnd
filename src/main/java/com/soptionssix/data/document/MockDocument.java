@@ -2,7 +2,6 @@ package com.soptionssix.data.document;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,7 +11,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public final class MockDocument {
 
     @Id
-    private ObjectId id;
+    private String id;
     private String type;
     private String value;
+
+    public MockDocument(String type, String value) {
+        this.type = type;
+        this.value = value;
+    }
 }

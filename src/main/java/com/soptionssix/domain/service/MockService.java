@@ -9,4 +9,6 @@ public interface MockService {
     List<MockDto> getAllMockData();
 
     List<ReferenceDocument> getAllRef();
+
+    ReferenceDocument saveRef();
 }

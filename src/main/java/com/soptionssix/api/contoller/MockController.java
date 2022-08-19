@@ -33,6 +33,11 @@ public class MockController {
         return mockService.getAllRef();
     }
 
+    @GetMapping("refref")
+    public ReferenceDocument saveRef() {
+        return mockService.saveRef();
+    }
+
     @GetMapping("error/{id}")
     public ErrorResponse throwError(
         @PathVariable("id") String id
