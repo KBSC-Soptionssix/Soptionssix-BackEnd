@@ -1,15 +1,18 @@
 package com.soptionssix.data.document;
 
-@Entity
-@Getter @Setter
-public class Product {
-    @Id @GenerateValue
-    @Column(name = "product_id")
-    private Long id;
+import lombok.Getter;
+import lombok.Setter;
+import nonapi.io.github.classgraph.json.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-    @ManyToOne
-    @JoinColumn(name="store_id")
-    private Store store;
+@Document(value="product")
+@Getter
+@Setter
+public class Product {
+    @Id
+    private String id;
+
+    private String store;
 
     private String photo;
     private String name;

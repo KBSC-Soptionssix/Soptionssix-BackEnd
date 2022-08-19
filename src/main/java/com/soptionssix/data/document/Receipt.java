@@ -1,27 +1,25 @@
 package com.soptionssix.data.document;
 
-@Entity
-@Getter @Setter
+import lombok.Getter;
+import lombok.Setter;
+import nonapi.io.github.classgraph.json.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(value="receipt")
+@Getter
+@Setter
 public class Receipt {
-    @Id @GenerateValue
-    @Column(name = "receipt_id")
-    private Long id;
+    @Id
+    private String id;
 
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User user;
 
-    @ManyToOne
-    @JoinColumn(name="store_id")
-    private Store store;
+    private String user;
 
-    @ManyToOne
-    @JoinColumn(name="product_id")
-    private Product product;
+    private String store;
 
-    @OneToOne
-    @JoinColumn(name="review_id")
-    private Review review;
+    private String product;
+
+    private String review;
 
     private int productCount;
     private Long date;
