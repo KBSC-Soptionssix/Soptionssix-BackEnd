@@ -2,17 +2,16 @@ package com.soptionssix.data.document;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "mock")
+@Document(collection = "reference")
 @Getter
 @Setter
-public final class MockDocument {
+public final class ReferenceDocument {
 
     @Id
-    private ObjectId id;
-    private String type;
-    private String value;
+    private String id;
+    private String title;
+    private String mock;
 }

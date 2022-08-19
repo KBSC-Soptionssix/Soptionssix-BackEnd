@@ -17,7 +17,7 @@ public class MockDtoMapper {
 
     public static MockDto of(MockDocument mockDocument) {
         return new MockDto(
-            mockDocument.getId(),
+            mockDocument.getId().toString(),
             mockDocument.getType(),
             mockDocument.getValue()
         );

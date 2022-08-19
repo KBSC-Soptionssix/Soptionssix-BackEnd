@@ -2,6 +2,7 @@ package com.soptionssix.api.contoller;
 
 import com.soptionssix.api.dto.ErrorResponse;
 import com.soptionssix.api.dto.MockDto;
+import com.soptionssix.data.document.ReferenceDocument;
 import com.soptionssix.domain.error.SoptionsException;
 import com.soptionssix.domain.service.MockService;
 import java.util.List;
@@ -25,6 +26,11 @@ public class MockController {
     @GetMapping("get")
     public List<MockDto> getAllMockData() {
         return mockService.getAllMockData();
+    }
+
+    @GetMapping("ref")
+    public List<ReferenceDocument> getAllRef() {
+        return mockService.getAllRef();
     }
 
     @GetMapping("error/{id}")
