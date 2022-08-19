@@ -124,6 +124,7 @@ jobs:
       run: ./gradlew build -x test
       
   notification:
+    if: ${{always()}}
     needs: [checkstyle, test, build]
     runs-on: ubuntu-latest
     steps:   
