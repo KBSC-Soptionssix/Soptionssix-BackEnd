@@ -3,6 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.12.RELEASE'
     id 'java'
     id "org.asciidoctor.jvm.convert" version "3.3.2"
+    id 'checkstyle'
 }
 
 group = 'com'
@@ -14,6 +15,12 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
+}
+
+checkstyle {
+    maxWarnings = 0 // 규칙이 어긋나는 코드가 하나라도 있을 경우 빌드 fail
+    configFile = file("${rootDir}/config/google_checks.xml") // 설정 파일 경로 지정
+    toolVersion = "10.3.2" // 처음에 낮은 버전을 사용했더니 깨지는 현상이 있었다. 설정파일의 내용에 맞는 버전을 선택
 }
 
 repositories {
@@ -29,7 +36,7 @@ dependencies {
     // spring boot devtools
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     // MongoDB spring boot starter
-    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     // Swagger 연동을 위한 spring doc open api
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.9'
     // test
