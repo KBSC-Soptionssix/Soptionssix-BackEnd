@@ -12,7 +12,7 @@ public class Product {
     @Id
     private String id;
     @DocumentReference(db = "store")
-    private String store;
+    private Store store;
 
     private String photo;
     private String name;
@@ -23,7 +23,7 @@ public class Product {
     private int donationWaitCount;
 
     public Product(
-        String store, String photo, String name, int stockCount, int price, int discount
+        Store store, String photo, String name, int stockCount, int price, int discount
     ) {
         this.store = store;
         this.photo = photo;
@@ -35,7 +35,7 @@ public class Product {
         this.donationWaitCount = 0;
     }
 
-    public Product(String store, String name, int stockCount, int price, int discount) {
+    public Product(Store store, String name, int stockCount, int price, int discount) {
         this(store, null, name, stockCount, price, discount);
     }
 
