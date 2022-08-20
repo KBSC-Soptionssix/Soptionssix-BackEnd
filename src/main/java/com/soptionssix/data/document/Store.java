@@ -6,10 +6,11 @@ import lombok.Setter;
 import nonapi.io.github.classgraph.json.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(value="store")
+@Document(value = "store")
 @Getter
 @Setter
 public class Store {
+
     @Id
     private String id;
 
