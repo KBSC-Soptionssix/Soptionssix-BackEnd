@@ -134,5 +134,5 @@ jobs:
         # uses: Ilshidur/action-discord@0c4b27844ba47cb1c7bee539c8eead5284ce9fa9
         env:
           DISCORD_WEBHOOK : ${{ secrets.DISCORD_WEBHOOK }}
-          DISCORD_EMBEDS : "[{\"title\":\"❌${{ github.event_name }}(${{ github.base_ref }}) 내용 확인이 필요합니다.\",\"color\":14177041, \"description\":\"**[${{ github.repository }}](https://github.com/KBSC-Soptionssix/Soptionssix-BackEnd)**\", \"fields\":[ {\"name\":\"check code style ✏\", \"value\":\"◼ ${{needs.checkstyle.result}}\", \"inline\":true },{\"name\":\"test 🛠\",\"value\":\"◼ ${{needs.test.result}}\",\"inline\":true},{\"name\":\"build 📃\",\"value\":\"◼ ${{needs.build.result}}\",\"inline\":true}]}]"
+          DISCORD_EMBEDS : "[{\"title\":\"❌${{github.ref_name}} : ${{ github.event_name }} 내용 확인이 필요합니다.\",\"color\":14177041, \"description\":\"**[${{ github.repository }}](https://github.com/KBSC-Soptionssix/Soptionssix-BackEnd)**\", \"fields\":[ {\"name\":\"check code style ✏\", \"value\":\"◼ ${{needs.checkstyle.result}}\", \"inline\":true },{\"name\":\"test 🛠\",\"value\":\"◼ ${{needs.test.result}}\",\"inline\":true},{\"name\":\"build 📃\",\"value\":\"◼ ${{needs.build.result}}\",\"inline\":true}]}]"
         uses: Ilshidur/action-discord@0.3.2
