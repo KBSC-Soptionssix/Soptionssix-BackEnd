@@ -1,10 +1,8 @@
 package com.soptionssix.data.document;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
-import lombok.Setter;
 import nonapi.io.github.classgraph.json.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
@@ -17,16 +15,16 @@ public class Review {
     private String id;
 
     @DocumentReference(db = "user")
-    private User user;
+    private final User user;
 
     @DocumentReference(db = "receipt")
-    private Receipt receipt;
+    private final Receipt receipt;
 
     private String region;
     private String content;
 
-    private List<String> photos = new ArrayList<>();
-    private Long createdAt;
+    private List<String> photos;
+    private final Long createdAt;
 
     public Review(
         User user, Receipt receipt, String region, String content, List<String> photos

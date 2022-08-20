@@ -6,7 +6,7 @@ import lombok.Setter;
 import nonapi.io.github.classgraph.json.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(value="user")
+@Document(value = "user")
 @Getter
 @Setter
 public class User {
