@@ -12,7 +12,7 @@ public class Product {
     @Id
     private String id;
     @DocumentReference(db = "store")
-    private Store store;
+    private final Store store;
 
     private String photo;
     private String name;
