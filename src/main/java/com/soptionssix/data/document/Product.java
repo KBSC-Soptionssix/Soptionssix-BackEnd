@@ -12,7 +12,7 @@ public class Product {
     @Id
     private String id;
     @DocumentReference(db = "store")
-    private final Store store;
+    private Store store;
 
     private String photo;
     private String name;
@@ -22,49 +22,6 @@ public class Product {
     private int donationCompleteCount;
     private int donationWaitCount;
 
-    public Product(
-        Store store, String photo, String name, int stockCount, int price, int discount
-    ) {
-        this.store = store;
-        this.photo = photo;
-        this.name = name;
-        this.stockCount = stockCount;
-        this.price = price;
-        this.discount = discount;
-        this.donationCompleteCount = 0;
-        this.donationWaitCount = 0;
-    }
-
-    public Product(Store store, String name, int stockCount, int price, int discount) {
-        this(store, null, name, stockCount, price, discount);
-    }
-
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setStockCount(int stockCount) {
-        this.stockCount = stockCount;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public void setDiscount(int discount) {
-        this.discount = discount;
-    }
-
-    public void setDonationCompleteCount(int donationCompleteCount) {
-        this.donationCompleteCount = donationCompleteCount;
-    }
-
-    public void setDonationWaitCount(int donationWaitCount) {
-        this.donationWaitCount = donationWaitCount;
+    protected Product() {
     }
 }
