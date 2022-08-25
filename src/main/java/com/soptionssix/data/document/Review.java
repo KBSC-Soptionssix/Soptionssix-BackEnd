@@ -15,41 +15,17 @@ public class Review {
     private String id;
 
     @DocumentReference(db = "user")
-    private final User user;
+    private User user;
 
     @DocumentReference(db = "receipt")
-    private final Receipt receipt;
+    private Receipt receipt;
 
     private String region;
     private String content;
 
     private List<String> photos;
-    private final Long createdAt;
+    private Long createdAt;
 
-    public Review(
-        User user, Receipt receipt, String region, String content, List<String> photos
-    ) {
-        this.user = user;
-        this.receipt = receipt;
-        this.region = region;
-        this.content = content;
-        this.photos = photos;
-        this.createdAt = System.currentTimeMillis() / 1000L;
-    }
-
-    public Review(User user, Receipt receipt, String region, String content) {
-        this(user, receipt, region, content, null);
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public void setPhotos(List<String> photos) {
-        this.photos = photos;
+    protected Review() {
     }
 }

@@ -13,40 +13,24 @@ public class Receipt {
     private String id;
 
     @DocumentReference(db = "user")
-    private final User user;
+    private User user;
 
     @DocumentReference(db = "store")
-    private final Store store;
+    private Store store;
 
     @DocumentReference(db = "product")
-    private final Product product;
+    private Product product;
 
     @DocumentReference(db = "review")
     private Review review;
 
-    private final int productCount;
-    private final Long date;
-    private final Long pickUpTime;
-    private final String paymentMethod;
-    private final boolean isChallenge;
-    private final boolean isDonate;
+    private int productCount;
+    private Long date;
+    private Long pickUpTime;
+    private String paymentMethod;
+    private boolean isChallenge;
+    private boolean isDonate;
 
-    public Receipt(
-        User user, Product product, int productCount, Long pickUpTime,
-        String paymentMethod, boolean isChallenge, boolean isDonate
-    ) {
-        this.user = user;
-        this.store = product.getStore();
-        this.product = product;
-        this.productCount = productCount;
-        this.date = System.currentTimeMillis() / 1000L;
-        this.pickUpTime = pickUpTime;
-        this.paymentMethod = paymentMethod;
-        this.isChallenge = isChallenge;
-        this.isDonate = isDonate;
-    }
-
-    public void setReview(Review review) {
-        this.review = review;
+    protected Receipt() {
     }
 }
