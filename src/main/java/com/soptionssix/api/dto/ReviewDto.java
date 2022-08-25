@@ -1,13 +1,9 @@
 package com.soptionssix.api.dto;
 
-import com.soptionssix.data.document.Receipt;
 import com.soptionssix.data.document.Review;
-import com.soptionssix.data.document.User;
 import java.util.List;
 import javax.validation.constraints.NotNull;
 import lombok.Getter;
-import nonapi.io.github.classgraph.json.Id;
-import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 @Getter
 public class ReviewDto {
