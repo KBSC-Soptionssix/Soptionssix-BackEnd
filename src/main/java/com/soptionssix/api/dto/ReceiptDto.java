@@ -19,7 +19,7 @@ public class ReceiptDto {
     @NotNull
     private final ProductDto product;
 
-    private final ReviewDto review;
+    private ReviewDto review;
     @NotNull
     private final int productCount;
     @NotNull
@@ -40,7 +40,9 @@ public class ReceiptDto {
         this.userId = UserDto.of(receipt.getUser()).getId();
         this.store = StoreDto.of(receipt.getStore());
         this.product = ProductDto.of(receipt.getProduct());
-        this.review = ReviewDto.of(receipt.getReview());
+        if (receipt.getReview() != null) {
+            this.review = ReviewDto.of(receipt.getReview());
+        }
         this.productCount = receipt.getProductCount();
         this.date = receipt.getDate();
         this.pickUpTime = receipt.getPickUpTime();
