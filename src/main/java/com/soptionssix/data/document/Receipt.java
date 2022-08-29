@@ -13,16 +13,16 @@ public class Receipt {
     @Id
     private String id;
 
-    @DocumentReference(db = "user")
+    @DocumentReference(collection = "user", lazy = true)
     private User user;
 
-    @DocumentReference(db = "store")
+    @DocumentReference(collection = "store", lazy = true)
     private Store store;
 
-    @DocumentReference(db = "product")
+    @DocumentReference(collection = "product", lazy = true)
     private Product product;
 
-    @DocumentReference(db = "review")
+    @DocumentReference(collection = "review")
     private Review review;
 
     @NotNull
