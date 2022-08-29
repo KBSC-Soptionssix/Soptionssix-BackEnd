@@ -14,10 +14,10 @@ public class Review {
     @Id
     private String id;
 
-    @DocumentReference(db = "user")
+    @DocumentReference(collection = "user", lazy = true)
     private User user;
 
-    @DocumentReference(db = "receipt")
+    @DocumentReference(collection = "receipt", lazy = true)
     private Receipt receipt;
 
     private String region;
