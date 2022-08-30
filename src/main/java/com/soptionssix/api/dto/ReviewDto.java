@@ -15,7 +15,7 @@ public class ReviewDto {
     private final UserDto user;
 
     @NotNull
-    private final ReceiptDto receipt;
+    private final ReceiptPreviewDto receiptPreview;
     @NotNull
     private final String region;
     @NotNull
@@ -30,7 +30,7 @@ public class ReviewDto {
     ) {
         this.id = review.getId();
         this.user = UserDto.of(review.getUser());
-        this.receipt = ReceiptDto.of(review.getReceipt());
+        this.receiptPreview = ReceiptPreviewDto.of(review.getReceipt());
         this.region = review.getRegion();
         this.content = review.getContent();
         this.photos = review.getPhotos();
