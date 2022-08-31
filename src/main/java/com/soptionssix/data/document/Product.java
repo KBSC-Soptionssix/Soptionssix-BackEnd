@@ -12,7 +12,7 @@ public class Product {
 
     @Id
     private String id;
-    @DocumentReference(db = "store")
+    @DocumentReference(collection = "store", lazy = true)
     @NotNull
     private Store store;
     private String photo;
