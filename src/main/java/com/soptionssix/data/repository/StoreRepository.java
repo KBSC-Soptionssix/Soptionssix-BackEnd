@@ -7,3 +7,4 @@ public interface StoreRepository extends MongoRepository<Store, String> {
 
 
 }
+

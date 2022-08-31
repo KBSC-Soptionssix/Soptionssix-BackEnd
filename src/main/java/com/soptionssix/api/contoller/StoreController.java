@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class StoreController {
     private final StoreService storeService;
 
+
     @Autowired
     public StoreController(StoreService storeService) {
         this.storeService = storeService;
