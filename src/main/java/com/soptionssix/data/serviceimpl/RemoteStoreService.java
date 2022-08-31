@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RemoteStoreService implements StoreService {
+
     private final StoreRepository storeRepository;
 
     @Autowired
@@ -18,10 +19,10 @@ public class RemoteStoreService implements StoreService {
     }
 
     @Override
-    public List<StoreDto> getAllStore(){
-         List<Store> stores = storeRepository.findAll();
-         return stores.stream()
-             .map((value)->StoreDto.of(value))
-             .toList();
+    public List<StoreDto> getAllStore() {
+        List<Store> stores = storeRepository.findAll();
+        return stores.stream()
+            .map((value) -> StoreDto.of(value))
+            .toList();
     }
 }
