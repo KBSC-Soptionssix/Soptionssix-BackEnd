@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("store")
 public class StoreController {
-    private final StoreService storeService;
 
+    private final StoreService storeService;
 
     @Autowired
     public StoreController(StoreService storeService) {
@@ -21,7 +21,7 @@ public class StoreController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<StoreDto>> getAllStore(){
+    public ResponseEntity<List<StoreDto>> getAllStore() {
         List<StoreDto> storeDtoList = storeService.getAllStore();
         return ResponseEntity.ok(storeDtoList);
     }
