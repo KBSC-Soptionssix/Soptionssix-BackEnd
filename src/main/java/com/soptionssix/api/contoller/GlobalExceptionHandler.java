@@ -3,6 +3,7 @@ package com.soptionssix.api.contoller;
 import com.soptionssix.api.dto.ErrorResponse;
 import com.soptionssix.domain.error.ErrorCode;
 import com.soptionssix.domain.error.SoptionsException;
+import io.jsonwebtoken.ExpiredJwtException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,13 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestControllerAdvice
 @Slf4j
 public final class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
+
+    @ExceptionHandler(SoptionsException.BadRequest.class)
+    public ResponseEntity<Object> handleBadRequestError(
+        SoptionsException.BadRequest exception
+    ) {
+        return responseErrorFormat(HttpStatus.BAD_REQUEST, exception);
+    }
 
     @ExceptionHandler(SoptionsException.Unauthenticated.class)
     public ResponseEntity<Object> handleUnauthenticatedError(
