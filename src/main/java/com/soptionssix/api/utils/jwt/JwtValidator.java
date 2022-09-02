@@ -32,11 +32,12 @@ public class JwtValidator {
             (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpServletRequest request = requestAttributes.getRequest();
         final String token = request.getHeader("token");
-        final String userId = jwtTokenProvider.decodeJwtToken(token);
-        validateTokenClaims(userId);
+        final PayLoad payload = jwtTokenProvider.decodeJwtPayload(token);
+        validatePayLoad(payload);
     }
 
-    private void validateTokenClaims(String userId) {
+    private void validatePayLoad(PayLoad payLoad) {
+        final String userId = payLoad.userId();
         if (!this.userService.hasUser(userId)) {
             throw new SoptionsException.Unauthenticated("can not find user authentication");
         }
