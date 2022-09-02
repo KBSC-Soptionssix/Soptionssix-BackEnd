@@ -38,7 +38,7 @@ dependencies {
     // MongoDB spring boot starter
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     // Swagger 연동을 위한 spring doc open api
-    implementation 'org.springdoc:springdoc-openapi-ui:1.6.9'
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.10'
     // test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     // Rest Docs
