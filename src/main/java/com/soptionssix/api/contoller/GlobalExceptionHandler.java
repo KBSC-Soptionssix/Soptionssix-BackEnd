@@ -3,8 +3,9 @@ package com.soptionssix.api.contoller;
 import com.soptionssix.api.dto.ErrorResponse;
 import com.soptionssix.domain.error.ErrorCode;
 import com.soptionssix.domain.error.SoptionsException;
-import io.jsonwebtoken.ExpiredJwtException;
+import com.soptionssix.env.RunEnvironment;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,13 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestControllerAdvice
 @Slf4j
 public final class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
+
+    private final RunEnvironment runEnvironment;
+
+    @Autowired
+    public GlobalExceptionHandler(RunEnvironment runEnvironment) {
+        this.runEnvironment = runEnvironment;
+    }
 
     @ExceptionHandler(SoptionsException.BadRequest.class)
     public ResponseEntity<Object> handleBadRequestError(
@@ -72,6 +80,8 @@ public final class GlobalExceptionHandler extends ResponseEntityExceptionHandler
     }
 
     private ErrorResponse createErrorResponseFrom(SoptionsException exception) {
-        return new ErrorResponse(exception.getErrorCode(), exception.getMessage());
+        String errorMessage = this.runEnvironment.isProduct() ? exception.getClass().getSimpleName()
+            : exception.getMessage();
+        return new ErrorResponse(exception.getErrorCode(), errorMessage);
     }
 }
