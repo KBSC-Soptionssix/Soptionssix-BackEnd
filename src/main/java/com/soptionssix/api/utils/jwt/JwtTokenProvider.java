@@ -3,10 +3,13 @@ package com.soptionssix.api.utils.jwt;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import java.security.Key;
+import java.util.Date;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
 public class JwtTokenProvider implements InitializingBean {
 
@@ -28,5 +31,12 @@ public class JwtTokenProvider implements InitializingBean {
     public void afterPropertiesSet() throws Exception {
         byte[] decodedKey = Decoders.BASE64.decode(secret);
         this.key = Keys.hmacShaKeyFor(decodedKey);
+    }
+
+    private Date createExpiredTime() {
+        long currentTime = new Date().getTime();
+        Date expiredTime = new Date(currentTime + this.tokenValidityOfMillisecond);
+        log.debug("new Token ExpiredTime : " + expiredTime);
+        return expiredTime;
     }
 }
