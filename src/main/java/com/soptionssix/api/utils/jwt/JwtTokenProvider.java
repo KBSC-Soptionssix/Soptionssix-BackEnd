@@ -59,11 +59,12 @@ public class JwtTokenProvider implements InitializingBean {
         return expiredTime;
     }
 
-    public String decodeJwtToken(final String token) {
+    public PayLoad decodeJwtPayload(final String token) {
         validationToken(token);
-        return parseClaimsOfJwt(token).getBody()
-            .get(CLAIM_KEY_OF_USER_ID)
-            .toString();
+        Claims claims = parseClaimsOfJwt(token).getBody();
+        return new PayLoad(
+            claims.get(CLAIM_KEY_OF_USER_ID, String.class)
+        );
     }
 
     private void validationToken(String token) {
