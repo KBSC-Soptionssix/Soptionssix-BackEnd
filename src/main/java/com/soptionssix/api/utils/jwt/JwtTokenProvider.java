@@ -43,7 +43,7 @@ public class JwtTokenProvider implements InitializingBean {
         this.key = Keys.hmacShaKeyFor(decodedKey);
     }
 
-    public String getJwtToken(final String userId) {
+    public String createTokenOf(final String userId) {
         return Jwts.builder()
             .claim(CLAIM_KEY_OF_USER_ID, userId)
             .signWith(key, SignatureAlgorithm.ES256)
