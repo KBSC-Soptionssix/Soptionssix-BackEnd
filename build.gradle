@@ -37,6 +37,13 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     // MongoDB spring boot starter
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    // AOP Starter
+    implementation 'org.springframework.boot:spring-boot-starter-aop:2.7.3'
+    // json web token
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
     // Swagger 연동을 위한 spring doc open api
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.10'
     // test
