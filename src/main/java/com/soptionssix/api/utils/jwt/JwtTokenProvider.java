@@ -1,5 +1,7 @@
 package com.soptionssix.api.utils.jwt;
 
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import java.security.Key;
@@ -31,6 +33,15 @@ public class JwtTokenProvider implements InitializingBean {
     public void afterPropertiesSet() throws Exception {
         byte[] decodedKey = Decoders.BASE64.decode(secret);
         this.key = Keys.hmacShaKeyFor(decodedKey);
+    }
+
+    public String getJwtToken(final String userId) {
+        return Jwts.builder()
+            .claim(CLAIM_KEY_OF_USER_ID, userId)
+            .signWith(key, SignatureAlgorithm.ES256)
+            .setExpiration(createExpiredTime())
+            .compact();
+
     }
 
     private Date createExpiredTime() {
