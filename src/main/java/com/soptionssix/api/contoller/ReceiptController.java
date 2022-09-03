@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,8 +27,12 @@ public class ReceiptController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<ReceiptDto>> getAllReceipt() {
-        List<ReceiptDto> receiptDtoList = receiptService.getAllReceipt("");
+    @RequiredJwtToken
+    public ResponseEntity<List<ReceiptDto>> getAllReceipt(
+        @RequestHeader(value = "token") final String token
+    ) {
+        PayLoad payLoad = this.jwtTokenProvider.decodeJwtPayload(token);
+        List<ReceiptDto> receiptDtoList = receiptService.getAllReceiptOf(payLoad.userId());
         return ResponseEntity.ok(receiptDtoList);
     }
 }
