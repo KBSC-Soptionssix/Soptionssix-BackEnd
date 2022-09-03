@@ -5,6 +5,7 @@ import com.soptionssix.data.document.Receipt;
 import com.soptionssix.data.repository.ReceiptRepository;
 import com.soptionssix.domain.service.ReceiptService;
 import java.util.List;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +20,8 @@ public class RemoteReceiptService implements ReceiptService {
     }
 
     @Override
-    public List<ReceiptDto> getAllReceipt(String userId) {
-        List<Receipt> receipts = receiptRepository.findAll();
+    public List<ReceiptDto> getAllReceiptOf(String userId) {
+        List<Receipt> receipts = receiptRepository.findByUser(new ObjectId(userId));
         return receipts.stream()
             .map(ReceiptDto::of)
             .toList();
