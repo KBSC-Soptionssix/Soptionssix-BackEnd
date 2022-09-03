@@ -1,7 +1,5 @@
 package com.soptionssix.data.serviceimpl;
 
-import com.soptionssix.api.dto.UserDto;
-import com.soptionssix.data.document.User;
 import com.soptionssix.data.repository.UserRepository;
 import com.soptionssix.domain.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
