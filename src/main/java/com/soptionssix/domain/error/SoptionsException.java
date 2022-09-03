@@ -27,6 +27,10 @@ public sealed class SoptionsException extends RuntimeException {
         public Unauthenticated() {
             super(ErrorCode.UNAUTHORIZED_UNAUTHENTICATED, "Unauthenticated");
         }
+
+        public Unauthenticated(String message) {
+            super(ErrorCode.UNAUTHORIZED_UNAUTHENTICATED, message);
+        }
     }
 
     public static final class ExpiredToken extends SoptionsException {
