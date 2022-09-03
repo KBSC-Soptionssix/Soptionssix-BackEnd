@@ -11,6 +11,7 @@ import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
 import lombok.extern.slf4j.Slf4j;
@@ -21,10 +22,9 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class JwtTokenProvider implements InitializingBean {
+public class JwtTokenProvider {
 
     private static final String CLAIM_KEY_OF_USER_ID = "userId";
-    private final String secret;
     private final long tokenValidityOfMillisecond;
 
     private Key key;
@@ -33,21 +33,16 @@ public class JwtTokenProvider implements InitializingBean {
         @Value("${jwt.secret}") String secret,
         @Value("${jwt.token-validity-in-seconds}") long tokenValidityOfMillisecond
     ) {
-        this.secret = secret;
+        byte[] secretKey = secret.getBytes(StandardCharsets.UTF_8);
+        this.key = Keys.hmacShaKeyFor(secretKey);
         this.tokenValidityOfMillisecond = tokenValidityOfMillisecond;
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        byte[] decodedKey = Decoders.BASE64.decode(secret);
-        this.key = Keys.hmacShaKeyFor(decodedKey);
     }
 
     public String createTokenOf(final String userId) {
         return Jwts.builder()
-            .claim(CLAIM_KEY_OF_USER_ID, userId)
-            .signWith(key, SignatureAlgorithm.ES256)
+            .signWith(key, SignatureAlgorithm.HS256)
             .setExpiration(createExpiredTime())
+            .claim(CLAIM_KEY_OF_USER_ID, userId)
             .compact();
 
     }
