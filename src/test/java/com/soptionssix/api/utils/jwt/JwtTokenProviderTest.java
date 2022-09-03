@@ -71,6 +71,7 @@ class JwtTokenProviderTest {
 
     @Test
     @DisplayName("잘못된 형식의 토큰이 주어지고, 토큰을 decode 하면, BadRequest 예외가 발생한다.")
+    @SuppressWarnings("checkstyle:LineLength")
     void validationTokenIsMalformed() {
         // given
         String malformedToken = "eyJhbGciOiJIUzI1NiJ9eyJleHAiOjE2NjIxOTU0OTksInVzZXJJZCI6InVzZXJJZCJ9.mQs_Qp5qSYvZ2XEfDCMCtc3REIgDsJXo7NfhoxmGjo81";
@@ -85,6 +86,7 @@ class JwtTokenProviderTest {
 
     @Test
     @DisplayName("잘못된 서명이된 토큰이 주어지고, 토큰을 decode 하면, Unauthenticated 예외가 발생한다.")
+    @SuppressWarnings("checkstyle:LineLength")
     void validationTokenIsInvalidSignature() {
         // given
         String invalidSignatureToken = "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjIxOTU0OTksInVzZXJJZCI6InVzZXJJZCJ9.mQs_Qp5qSYvZ2XEfDCMCtc3REIgDsJXo7NfhoxmGjo81";
@@ -99,6 +101,7 @@ class JwtTokenProviderTest {
 
     @Test
     @DisplayName("만료된 토큰이 주어지고, 토큰을 decode 하면, ExpiredToken 예외가 발생한다.")
+    @SuppressWarnings("checkstyle:LineLength")
     void validationTokenIsExpired() {
         // given
         String expiredToken = "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjIxMjA1MjgsInVzZXJJZCI6InVzZXJJZCJ9.JYNu1G4FUp3NBb7erA4hl2OG40hqsk0YPKOeNa7n9EI";
