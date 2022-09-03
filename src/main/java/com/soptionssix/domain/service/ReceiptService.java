@@ -6,4 +6,6 @@ import java.util.List;
 public interface ReceiptService {
 
     List<ReceiptDto> getAllReceiptOf(String userId);
+
+    ReceiptDto getReceiptById(String id);
 }
