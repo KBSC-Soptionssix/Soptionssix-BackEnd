@@ -1,6 +1,9 @@
 package com.soptionssix.api.contoller;
 
 import com.soptionssix.api.dto.ReceiptDto;
+import com.soptionssix.api.utils.jwt.JwtTokenProvider;
+import com.soptionssix.api.utils.jwt.PayLoad;
+import com.soptionssix.api.utils.jwt.RequiredJwtToken;
 import com.soptionssix.domain.service.ReceiptService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class ReceiptController {
 
     private final ReceiptService receiptService;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @Autowired
-    public ReceiptController(ReceiptService receiptService) {
+    public ReceiptController(ReceiptService receiptService, JwtTokenProvider jwtTokenProvider) {
         this.receiptService = receiptService;
+        this.jwtTokenProvider = jwtTokenProvider;
     }
 
     @GetMapping("")
