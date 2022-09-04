@@ -1,4 +1,3 @@
-/*
 package com.soptionssix.api.utils.jwt;
 
 import com.soptionssix.domain.error.SoptionsException;
@@ -114,4 +113,4 @@ class JwtTokenProviderTest {
         );
         Assertions.assertEquals(4011, exception.getErrorCode());*/
     }
-}*/
+}
