@@ -43,7 +43,7 @@ class JwtTokenProviderTest {
     @Test
     @DisplayName("null 값의 토큰이 주어지고, 토큰을 decode 하면, BadRequest 예외가 발생한다.")
     void validationTokenIsNull() {
-        /*// given
+        // given
         // when
         // then
         SoptionsException.BadRequest exception = Assertions.assertThrows(
@@ -51,13 +51,13 @@ class JwtTokenProviderTest {
             () -> this.jwtTokenProvider.decodeJwtPayload(null)
         );
         Assertions.assertEquals(4000, exception.getErrorCode());
-        Assertions.assertEquals("token is empty", exception.getMessage());*/
+        Assertions.assertEquals("token is empty", exception.getMessage());
     }
 
     @Test
     @DisplayName("empty 값의 토큰이 주어지고, 토큰을 decode 하면, BadRequest 예외가 발생한다.")
     void validationTokenIsEmpty() {
-        /*// given
+        // given
         String emptyToken = "";
         // when
         // then
@@ -66,14 +66,14 @@ class JwtTokenProviderTest {
             () -> this.jwtTokenProvider.decodeJwtPayload(emptyToken)
         );
         Assertions.assertEquals(4000, exception.getErrorCode());
-        Assertions.assertEquals("token is empty", exception.getMessage());*/
+        Assertions.assertEquals("token is empty", exception.getMessage());
     }
 
     @Test
     @DisplayName("잘못된 형식의 토큰이 주어지고, 토큰을 decode 하면, BadRequest 예외가 발생한다.")
     @SuppressWarnings("checkstyle:LineLength")
     void validationTokenIsMalformed() {
-        /*// given
+        // given
         String malformedToken = "eyJhbGciOiJIUzI1NiJ9eyJleHAiOjE2NjIxOTU0OTksInVzZXJJZCI6InVzZXJJZCJ9.mQs_Qp5qSYvZ2XEfDCMCtc3REIgDsJXo7NfhoxmGjo81";
         // when
         // then
@@ -81,14 +81,14 @@ class JwtTokenProviderTest {
             SoptionsException.BadRequest.class,
             () -> this.jwtTokenProvider.decodeJwtPayload(malformedToken)
         );
-        Assertions.assertEquals(4000, exception.getErrorCode());*/
+        Assertions.assertEquals(4000, exception.getErrorCode());
     }
 
     @Test
     @DisplayName("잘못된 서명이된 토큰이 주어지고, 토큰을 decode 하면, Unauthenticated 예외가 발생한다.")
     @SuppressWarnings("checkstyle:LineLength")
     void validationTokenIsInvalidSignature() {
-        /*// given
+        // given
         String invalidSignatureToken = "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjIxOTU0OTksInVzZXJJZCI6InVzZXJJZCJ9.mQs_Qp5qSYvZ2XEfDCMCtc3REIgDsJXo7NfhoxmGjo81";
         // when
         // then
@@ -96,14 +96,14 @@ class JwtTokenProviderTest {
             SoptionsException.Unauthenticated.class,
             () -> this.jwtTokenProvider.decodeJwtPayload(invalidSignatureToken)
         );
-        Assertions.assertEquals(4010, exception.getErrorCode());*/
+        Assertions.assertEquals(4010, exception.getErrorCode());
     }
 
     @Test
     @DisplayName("만료된 토큰이 주어지고, 토큰을 decode 하면, ExpiredToken 예외가 발생한다.")
     @SuppressWarnings("checkstyle:LineLength")
     void validationTokenIsExpired() {
-        /*// given
+        // given
         String expiredToken = "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NjIxMjA1MjgsInVzZXJJZCI6InVzZXJJZCJ9.JYNu1G4FUp3NBb7erA4hl2OG40hqsk0YPKOeNa7n9EI";
         // when
         // then
@@ -111,6 +111,6 @@ class JwtTokenProviderTest {
             SoptionsException.ExpiredToken.class,
             () -> this.jwtTokenProvider.decodeJwtPayload(expiredToken)
         );
-        Assertions.assertEquals(4011, exception.getErrorCode());*/
+        Assertions.assertEquals(4011, exception.getErrorCode());
     }
 }
