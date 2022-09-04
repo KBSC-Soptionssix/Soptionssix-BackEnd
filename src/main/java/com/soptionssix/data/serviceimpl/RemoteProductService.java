@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RemoteProductService implements ProductService {
+
     private final ProductRepository productRepository;
 
     @Autowired
@@ -18,7 +19,7 @@ public class RemoteProductService implements ProductService {
     }
 
     @Override
-    public List<ProductDto> getAllProduct(){
+    public List<ProductDto> getAllProduct() {
         List<Product> products = productRepository.findAll();
         return products.stream()
             .map((value) -> ProductDto.of(value))
