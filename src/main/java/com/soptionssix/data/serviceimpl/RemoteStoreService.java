@@ -46,12 +46,7 @@ public class RemoteStoreService implements StoreService {
             }
         );
         ProductDto productDto = ProductDto.of(product);
-        String storeId = product.getStore().getId();
-        Store store = storeRepository.findById(storeId).orElseThrow(
-            () -> {
-                throw new SoptionsException.BadRequest("store id가 잘못되었습니다");
-            }
-        );
+        Store store = product.getStore();
 
         return StoreDetailDto.of(store, productDto);
     }
