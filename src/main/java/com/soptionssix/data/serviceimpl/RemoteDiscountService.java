@@ -31,12 +31,12 @@ public class RemoteDiscountService implements DiscountService {
     }
 
     @Override
-    public DiscountDto getDiscount(){
+    public DiscountDto getDiscount() {
 
-        Page<Store> storePage = storeRepository.findAll(PageRequest.of(0,5));
+        Page<Store> storePage = storeRepository.findAll(PageRequest.of(0, 5));
         List<Store> storeList = storePage.getContent();
 
-        Page<Product> productPage = productRepository.findAll(PageRequest.of(0,5));
+        Page<Product> productPage = productRepository.findAll(PageRequest.of(0, 5));
         List<Product> productList = productPage.getContent();
 
         List<Product> waitDonations = productRepository.findByDonationWaitCountGreaterThan(0);
