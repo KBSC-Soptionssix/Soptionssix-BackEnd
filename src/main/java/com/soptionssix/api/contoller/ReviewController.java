@@ -45,6 +45,7 @@ public class ReviewController {
         @RequestBody @Valid ReviewParam reviewParam
     ) {
         PayLoad payLoad = jwtTokenProvider.decodeJwtPayload(token);
-        return ResponseEntity.ok(null);
+        ReviewDto reviewDto = reviewService.saveReview(payLoad.userId(), reviewParam);
+        return ResponseEntity.ok(reviewDto);
     }
 }
