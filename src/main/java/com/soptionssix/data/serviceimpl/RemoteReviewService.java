@@ -46,6 +46,17 @@ public class RemoteReviewService implements ReviewService {
     }
 
     @Override
+    public ReviewDto getReview(String reviewId) {
+        Review review = reviewRepository.findById(reviewId)
+            .orElseThrow(
+                () -> {
+                    throw new BadRequest("can not find reviewId");
+                }
+            );
+        return ReviewDto.of(review);
+    }
+
+    @Override
     public ReviewDto saveReview(String userId, ReviewParam reviewParam) {
         User user = findUserDataById(userId);
         Receipt receipt = findReceiptDataById(reviewParam.receipt());

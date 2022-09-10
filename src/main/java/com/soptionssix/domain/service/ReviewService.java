@@ -8,5 +8,7 @@ public interface ReviewService {
 
     List<ReviewDto> getAllReview();
 
+    ReviewDto getReview(String reviewId);
+
     ReviewDto saveReview(String userId, ReviewParam reviewParam);
 }
