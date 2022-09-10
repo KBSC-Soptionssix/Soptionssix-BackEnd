@@ -27,9 +27,9 @@ public class RemoteProductService implements ProductService {
         if (Objects.equals(filter, "donation")) {
             products = productRepository.findByDonationWaitCountGreaterThan(0);
 
-        } else if(Objects.equals(filter, null)) {
+        } else if (Objects.equals(filter, null)) {
             products = productRepository.findAll();
-        } else{
+        } else {
             throw new SoptionsException.BadRequest("잘못된 요청입니다");
         }
         return products.stream()
