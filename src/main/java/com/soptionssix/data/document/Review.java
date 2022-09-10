@@ -1,6 +1,7 @@
 package com.soptionssix.data.document;
 
 
+import java.util.Date;
 import java.util.List;
 import lombok.Getter;
 import nonapi.io.github.classgraph.json.Id;
@@ -26,6 +27,19 @@ public class Review {
     private List<String> photos;
     private Long createdAt;
 
-    protected Review() {
+    public Review(
+        User user,
+        Receipt receipt,
+        String region,
+        String content,
+        List<String> photos
+    ) {
+        long currentTime = new Date().getTime() / 1000L;
+        this.user = user;
+        this.receipt = receipt;
+        this.region = region;
+        this.content = content;
+        this.photos = photos;
+        this.createdAt = currentTime;
     }
 }
