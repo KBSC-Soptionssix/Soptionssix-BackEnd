@@ -1,6 +1,8 @@
 package com.soptionssix.data.document;
 
 
+import com.soptionssix.api.param.ReceiptParam;
+import com.soptionssix.api.param.ReviewParam;
 import java.util.Date;
 import java.util.List;
 import lombok.Getter;
@@ -27,7 +29,7 @@ public class Review {
     private List<String> photos;
     private Long createdAt;
 
-    public Review(
+    protected Review(
         User user,
         Receipt receipt,
         String region,
@@ -41,5 +43,19 @@ public class Review {
         this.content = content;
         this.photos = photos;
         this.createdAt = currentTime;
+    }
+
+    public static Review of(
+        User user,
+        Receipt receipt,
+        ReviewParam reviewParam
+    ) {
+        return new Review(
+            user,
+            receipt,
+            reviewParam.region(),
+            reviewParam.content(),
+            reviewParam.photo()
+        );
     }
 }
