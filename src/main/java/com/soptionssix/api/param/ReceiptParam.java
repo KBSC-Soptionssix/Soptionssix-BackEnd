@@ -16,7 +16,7 @@ public record ReceiptParam(
     @NotNull(message = "productCount is null")
     int productCount,
     @NotNull(message = "pickUpTime is null")
-    long pickUpTime,
+    Long pickUpTime,
     @NotNull(message = "paymentMethod is null")
     String paymentMethod,
     boolean isChallenge,
@@ -28,7 +28,7 @@ public record ReceiptParam(
         String storeId,
         String productId,
         int productCount,
-        long pickUpTime,
+        Long pickUpTime,
         String paymentMethod,
         Boolean isChallenge,
         Boolean isDonate

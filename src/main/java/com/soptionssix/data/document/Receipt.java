@@ -1,5 +1,7 @@
 package com.soptionssix.data.document;
 
+import com.soptionssix.api.param.ReceiptParam;
+import java.util.Date;
 import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import nonapi.io.github.classgraph.json.Id;
@@ -38,6 +40,48 @@ public class Receipt {
     @NotNull
     private boolean isDonate;
 
-    protected Receipt() {
+    protected Receipt(
+        User user,
+        Store store,
+        Product product,
+        Review review,
+        int productCount,
+        Long date,
+        Long pickUpTime,
+        String paymentMethod,
+        boolean isChallenge,
+        boolean isDonate
+    ) {
+        this.user = user;
+        this.store = store;
+        this.product = product;
+        this.review = review;
+        this.productCount = productCount;
+        this.date = date;
+        this.pickUpTime = pickUpTime;
+        this.paymentMethod = paymentMethod;
+        this.isChallenge = isChallenge;
+        this.isDonate = isDonate;
+    }
+
+    public static Receipt of(
+        User user,
+        Store store,
+        Product product,
+        ReceiptParam receiptParam
+    ) {
+        long currentTime = new Date().getTime() / 1000L;
+        return new Receipt(
+            user,
+            store,
+            product,
+            null,
+            receiptParam.productCount(),
+            currentTime,
+            receiptParam.pickUpTime(),
+            receiptParam.paymentMethod(),
+            receiptParam.isChallenge(),
+            receiptParam.isDonate()
+        );
     }
 }

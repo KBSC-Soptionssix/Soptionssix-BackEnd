@@ -1,40 +1,46 @@
 package com.soptionssix.api.contoller;
 
 import com.soptionssix.api.dto.ReceiptDto;
+import com.soptionssix.api.param.ReceiptParam;
 import com.soptionssix.api.utils.jwt.JwtTokenProvider;
 import com.soptionssix.api.utils.jwt.PayLoad;
 import com.soptionssix.api.utils.jwt.RequiredJwtToken;
+import com.soptionssix.domain.error.SoptionsException;
+import com.soptionssix.domain.error.SoptionsException.BadRequest;
 import com.soptionssix.domain.service.ProductService;
 import com.soptionssix.domain.service.ReceiptService;
 import com.soptionssix.domain.service.UserService;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@Validated
 @RequestMapping("receipt")
 public class ReceiptController {
 
     private final ReceiptService receiptService;
-    private final UserService userService;
-    private final ProductService productService;
     private final JwtTokenProvider jwtTokenProvider;
 
     @Autowired
     public ReceiptController(
         ReceiptService receiptService,
-        UserService userService, ProductService productService,
         JwtTokenProvider jwtTokenProvider
     ) {
         this.receiptService = receiptService;
-        this.userService = userService;
-        this.productService = productService;
         this.jwtTokenProvider = jwtTokenProvider;
     }
 
@@ -60,8 +66,13 @@ public class ReceiptController {
     @PostMapping("")
     @RequiredJwtToken
     public ResponseEntity<ReceiptDto> addReceipt(
-        @RequestHeader(value = "token") final String token
+        @RequestHeader(value = "token") final String token,
+        @RequestBody @Valid ReceiptParam receiptParam
     ) {
-        return ResponseEntity.ok(null);
+        PayLoad payLoad = this.jwtTokenProvider.decodeJwtPayload(token);
+        ReceiptDto receiptDto = receiptService.saveReceipt(
+            payLoad.userId(), receiptParam
+        );
+        return ResponseEntity.ok(receiptDto);
     }
 }
