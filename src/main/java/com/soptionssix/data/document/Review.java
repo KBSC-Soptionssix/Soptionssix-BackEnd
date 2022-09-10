@@ -26,7 +26,7 @@ public class Review {
     private String content;
 
     private List<String> photos;
-    private final Long createdAt;
+    private long createdAt;
 
     protected Review(
         User user,
