@@ -24,7 +24,11 @@ public record ReceiptParam(
 ) {
 
     public ReceiptParam(
-        String phone, String storeId, String productId, int productCount, long pickUpTime,
+        String phone,
+        String storeId,
+        String productId,
+        int productCount,
+        long pickUpTime,
         String paymentMethod,
         Boolean isChallenge,
         Boolean isDonate
