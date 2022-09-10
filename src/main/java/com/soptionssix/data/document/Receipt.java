@@ -84,4 +84,8 @@ public class Receipt {
             receiptParam.isDonate()
         );
     }
+
+    public void addReview(Review review) {
+        this.review = review;
+    }
 }
