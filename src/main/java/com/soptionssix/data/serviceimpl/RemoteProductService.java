@@ -4,9 +4,7 @@ import com.soptionssix.api.dto.ProductDto;
 import com.soptionssix.data.document.Product;
 import com.soptionssix.data.repository.ProductRepository;
 import com.soptionssix.domain.service.ProductService;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

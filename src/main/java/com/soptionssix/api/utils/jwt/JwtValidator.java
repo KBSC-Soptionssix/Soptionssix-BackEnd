@@ -2,9 +2,7 @@ package com.soptionssix.api.utils.jwt;
 
 import com.soptionssix.domain.error.SoptionsException;
 import com.soptionssix.domain.service.UserService;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;

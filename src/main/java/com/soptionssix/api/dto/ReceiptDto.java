@@ -1,9 +1,7 @@
 package com.soptionssix.api.dto;
 
 import com.soptionssix.data.document.Receipt;
-
 import javax.validation.constraints.NotNull;
-
 import lombok.Getter;
 
 @Getter
@@ -20,8 +18,6 @@ public class ReceiptDto {
 
     @NotNull
     private final ProductDto product;
-
-    private ReviewDto review;
     @NotNull
     private final int productCount;
     @NotNull
@@ -34,6 +30,7 @@ public class ReceiptDto {
     private final boolean isChallenge;
     @NotNull
     private final boolean isDonate;
+    private ReviewDto review;
 
     private ReceiptDto(
         Receipt receipt

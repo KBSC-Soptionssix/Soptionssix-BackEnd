@@ -2,7 +2,6 @@ package com.soptionssix.data.mapper;
 
 import com.soptionssix.api.dto.MockDto;
 import com.soptionssix.data.document.MockDocument;
-
 import java.util.List;
 
 public class MockDtoMapper {

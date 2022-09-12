@@ -3,11 +3,7 @@ package com.soptionssix.api.contoller;
 
 import com.soptionssix.api.dto.DiscountDto;
 import com.soptionssix.api.dto.DiscountStoreDetailDto;
-import com.soptionssix.api.dto.ProductDto;
 import com.soptionssix.domain.service.DiscountService;
-
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
