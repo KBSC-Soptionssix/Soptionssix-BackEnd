@@ -25,7 +25,7 @@ public class RemoteStoreService implements StoreService {
 
     @Autowired
     public RemoteStoreService(
-            StoreRepository storeRepository, ProductRepository productRepository
+        StoreRepository storeRepository, ProductRepository productRepository
     ) {
         this.storeRepository = storeRepository;
         this.productRepository = productRepository;
@@ -36,16 +36,16 @@ public class RemoteStoreService implements StoreService {
 
         List<Store> stores = storeRepository.findAll();
         return stores.stream()
-                .map((value) -> StoreDto.of(value))
-                .toList();
+            .map((value) -> StoreDto.of(value))
+            .toList();
     }
 
     @Override
     public StoreDetailDto getStoreDetail(String id) {
         Product product = productRepository.findById(id).orElseThrow(
-                () -> {
-                    throw new SoptionsException.BadRequest("product id가 잘못되었습니다");
-                }
+            () -> {
+                throw new SoptionsException.BadRequest("product id가 잘못되었습니다");
+            }
         );
         ProductDto productDto = ProductDto.of(product);
         Store store = product.getStore();

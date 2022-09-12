@@ -24,7 +24,7 @@ public class RemoteProductService implements ProductService {
     public List<ProductDto> getAllProduct() {
         List<Product> products = productRepository.findAll();
         return products.stream()
-                .map((value) -> ProductDto.of(value))
-                .toList();
+            .map((value) -> ProductDto.of(value))
+            .toList();
     }
 }

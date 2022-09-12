@@ -32,7 +32,7 @@ public class StoreController {
 
     @GetMapping("{id}")
     public ResponseEntity<StoreDetailDto> getStoreDetail(
-            @PathVariable(value = "id") final String id
+        @PathVariable(value = "id") final String id
     ) {
         StoreDetailDto storeDetailDto = storeService.getStoreDetail(id);
         return ResponseEntity.ok(storeDetailDto);

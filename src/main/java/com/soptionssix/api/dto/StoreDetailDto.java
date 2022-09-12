@@ -40,7 +40,7 @@ public class StoreDetailDto {
     private final ProductDto product;
 
     private StoreDetailDto(
-            Store store, ProductDto product
+        Store store, ProductDto product
     ) {
         this.id = store.getId();
         this.photo = store.getPhoto();
