@@ -1,7 +1,6 @@
 package com.soptionssix.api.contoller;
 
 import com.soptionssix.api.dto.ReviewDto;
-import com.soptionssix.api.utils.jwt.RequiredJwtToken;
 import com.soptionssix.domain.service.ReviewService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

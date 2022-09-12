@@ -5,9 +5,7 @@ import com.soptionssix.api.utils.jwt.JwtTokenProvider;
 import com.soptionssix.api.utils.jwt.PayLoad;
 import com.soptionssix.api.utils.jwt.RequiredJwtToken;
 import com.soptionssix.domain.service.ReceiptService;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

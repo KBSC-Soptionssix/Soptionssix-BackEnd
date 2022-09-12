@@ -4,9 +4,7 @@ import com.soptionssix.api.dto.ReceiptDto;
 import com.soptionssix.data.document.Receipt;
 import com.soptionssix.data.repository.ReceiptRepository;
 import com.soptionssix.domain.service.ReceiptService;
-
 import java.util.List;
-
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

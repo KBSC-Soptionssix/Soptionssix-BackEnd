@@ -4,14 +4,13 @@ import com.soptionssix.api.dto.DiscountDto;
 import com.soptionssix.api.dto.DiscountStoreDetailDto;
 import com.soptionssix.data.document.Product;
 import com.soptionssix.data.document.Store;
-
 import java.util.List;
 
 public interface DiscountService {
 
     DiscountDto getDiscount();
 
-    List<Store> getStores(int PageSize);
+    List<Store> getStores(int pageSize);
 
 
     List<Product> getProducts(int pageSize);

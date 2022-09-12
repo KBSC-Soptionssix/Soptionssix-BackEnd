@@ -2,10 +2,8 @@ package com.soptionssix.api.dto;
 
 import com.soptionssix.data.document.Product;
 import com.soptionssix.data.document.Store;
-
 import java.util.List;
 import javax.validation.constraints.NotNull;
-
 import lombok.Getter;
 
 @Getter
