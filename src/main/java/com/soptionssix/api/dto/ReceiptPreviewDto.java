@@ -1,7 +1,9 @@
 package com.soptionssix.api.dto;
 
 import com.soptionssix.data.document.Receipt;
+
 import javax.validation.constraints.NotNull;
+
 import lombok.Getter;
 
 @Getter
@@ -29,7 +31,7 @@ public class ReceiptPreviewDto {
     private final boolean isDonate;
 
     private ReceiptPreviewDto(
-        Receipt receipt
+            Receipt receipt
     ) {
         this.id = receipt.getId();
         this.userId = UserDto.of(receipt.getUser()).getId();

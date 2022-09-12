@@ -11,9 +11,11 @@ import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
+
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
@@ -30,8 +32,8 @@ public class JwtTokenProvider {
     private Key key;
 
     public JwtTokenProvider(
-        @Value("${jwt.secret}") String secret,
-        @Value("${jwt.token-validity-in-seconds}") long tokenValidityOfMillisecond
+            @Value("${jwt.secret}") String secret,
+            @Value("${jwt.token-validity-in-seconds}") long tokenValidityOfMillisecond
     ) {
         byte[] secretKey = secret.getBytes(StandardCharsets.UTF_8);
         this.key = Keys.hmacShaKeyFor(secretKey);
@@ -40,10 +42,10 @@ public class JwtTokenProvider {
 
     public String createTokenOf(final String userId) {
         return Jwts.builder()
-            .signWith(key, SignatureAlgorithm.HS256)
-            .setExpiration(createExpiredTime())
-            .claim(CLAIM_KEY_OF_USER_ID, userId)
-            .compact();
+                .signWith(key, SignatureAlgorithm.HS256)
+                .setExpiration(createExpiredTime())
+                .claim(CLAIM_KEY_OF_USER_ID, userId)
+                .compact();
 
     }
 
@@ -58,7 +60,7 @@ public class JwtTokenProvider {
         validationToken(token);
         Claims claims = parseClaimsOfJwt(token).getBody();
         return new PayLoad(
-            claims.get(CLAIM_KEY_OF_USER_ID, String.class)
+                claims.get(CLAIM_KEY_OF_USER_ID, String.class)
         );
     }
 
@@ -70,8 +72,8 @@ public class JwtTokenProvider {
 
     private JwtParser getSigningJwtParser() {
         return Jwts.parserBuilder()
-            .setSigningKey(key)
-            .build();
+                .setSigningKey(key)
+                .build();
     }
 
     private Jws<Claims> parseClaimsOfJwt(final String token) {

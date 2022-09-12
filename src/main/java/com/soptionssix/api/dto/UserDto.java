@@ -1,7 +1,9 @@
 package com.soptionssix.api.dto;
 
 import com.soptionssix.data.document.User;
+
 import javax.validation.constraints.NotNull;
+
 import lombok.Getter;
 
 @Getter

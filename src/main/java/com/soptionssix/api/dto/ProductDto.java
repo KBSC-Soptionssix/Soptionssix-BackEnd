@@ -1,7 +1,9 @@
 package com.soptionssix.api.dto;
 
 import com.soptionssix.data.document.Product;
+
 import javax.validation.constraints.NotNull;
+
 import lombok.Getter;
 
 @Getter
@@ -24,7 +26,7 @@ public class ProductDto {
     private final int donationWaitCount;
 
     private ProductDto(
-        Product product
+            Product product
     ) {
         this.id = product.getId();
         this.storePreview = StorePreviewDto.of(product.getStore());

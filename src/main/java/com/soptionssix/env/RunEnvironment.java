@@ -1,6 +1,7 @@
 package com.soptionssix.env;
 
 import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
@@ -20,12 +21,12 @@ public class RunEnvironment {
     public boolean isProduct() {
         String[] activeProfiles = this.environment.getActiveProfiles();
         return Arrays.stream(activeProfiles)
-            .anyMatch(profile -> profile.equalsIgnoreCase(ENV_PRODUCT));
+                .anyMatch(profile -> profile.equalsIgnoreCase(ENV_PRODUCT));
     }
 
     public boolean isDevelopment() {
         String[] activeProfiles = this.environment.getActiveProfiles();
         return Arrays.stream(activeProfiles)
-            .anyMatch(profile -> profile.equalsIgnoreCase(ENV_DEVELOPMENT));
+                .anyMatch(profile -> profile.equalsIgnoreCase(ENV_DEVELOPMENT));
     }
 }

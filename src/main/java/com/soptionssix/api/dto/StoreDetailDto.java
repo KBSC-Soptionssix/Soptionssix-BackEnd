@@ -1,7 +1,9 @@
 package com.soptionssix.api.dto;
 
 import com.soptionssix.data.document.Store;
+
 import javax.validation.constraints.NotNull;
+
 import lombok.Getter;
 
 @Getter
@@ -38,7 +40,7 @@ public class StoreDetailDto {
     private final ProductDto product;
 
     private StoreDetailDto(
-        Store store, ProductDto product
+            Store store, ProductDto product
     ) {
         this.id = store.getId();
         this.photo = store.getPhoto();
