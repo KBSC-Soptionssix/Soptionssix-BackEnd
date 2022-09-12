@@ -18,7 +18,7 @@ public class MongoDbConfig {
 
     @Autowired
     public MongoDbConfig(
-        MongoDatabaseFactory mongoDatabaseFactory, MongoMappingContext mongoMappingContext
+            MongoDatabaseFactory mongoDatabaseFactory, MongoMappingContext mongoMappingContext
     ) {
         this.mongoDatabaseFactory = mongoDatabaseFactory;
         this.mongoMappingContext = mongoMappingContext;
@@ -28,7 +28,7 @@ public class MongoDbConfig {
     public MappingMongoConverter mappingMongoConverter() {
         DbRefResolver dbRefResolver = new DefaultDbRefResolver(mongoDatabaseFactory);
         MappingMongoConverter converter = new MappingMongoConverter(
-            dbRefResolver, mongoMappingContext
+                dbRefResolver, mongoMappingContext
         );
         converter.setTypeMapper(new DefaultMongoTypeMapper(null));
         return converter;

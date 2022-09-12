@@ -2,7 +2,9 @@ package com.soptionssix.api.utils.jwt;
 
 import com.soptionssix.domain.error.SoptionsException;
 import com.soptionssix.domain.service.UserService;
+
 import javax.servlet.http.HttpServletRequest;
+
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +21,8 @@ public class JwtValidator {
 
     @Autowired
     public JwtValidator(
-        JwtTokenProvider jwtTokenProvider,
-        UserService userService
+            JwtTokenProvider jwtTokenProvider,
+            UserService userService
     ) {
         this.jwtTokenProvider = jwtTokenProvider;
         this.userService = userService;
@@ -29,7 +31,7 @@ public class JwtValidator {
     @Before("@annotation(com.soptionssix.api.utils.jwt.RequiredJwtToken)")
     public void validateToken() {
         ServletRequestAttributes requestAttributes =
-            (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+                (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpServletRequest request = requestAttributes.getRequest();
         final String token = request.getHeader("token");
         final PayLoad payload = jwtTokenProvider.decodeJwtPayload(token);

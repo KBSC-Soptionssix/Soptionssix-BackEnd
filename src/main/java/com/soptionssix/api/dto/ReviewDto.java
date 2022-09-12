@@ -1,8 +1,10 @@
 package com.soptionssix.api.dto;
 
 import com.soptionssix.data.document.Review;
+
 import java.util.List;
 import javax.validation.constraints.NotNull;
+
 import lombok.Getter;
 
 @Getter
@@ -26,7 +28,7 @@ public class ReviewDto {
     private final Long createdAt;
 
     private ReviewDto(
-        Review review
+            Review review
     ) {
         this.id = review.getId();
         this.user = UserDto.of(review.getUser());
