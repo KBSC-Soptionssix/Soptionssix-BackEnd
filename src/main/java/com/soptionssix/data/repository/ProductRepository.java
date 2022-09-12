@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface ProductRepository extends MongoRepository<Product, String> {
 
 
-    List<Product> findByDonationWaitCountGreaterThan(int i);
+    List<Product> findByDonationWaitCountGreaterThan(int donationWaitCount);
 
     List<Product> findByStore(Store store);
 }
