@@ -26,7 +26,7 @@ public class RemoteDiscountService implements DiscountService {
 
     @Autowired
     public RemoteDiscountService(
-            StoreRepository storeRepository, ProductRepository productRepository
+        StoreRepository storeRepository, ProductRepository productRepository
     ) {
         this.storeRepository = storeRepository;
         this.productRepository = productRepository;
@@ -67,15 +67,15 @@ public class RemoteDiscountService implements DiscountService {
     @Override
     public DiscountStoreDetailDto getStoreDetail(String storeId) {
         Store store = storeRepository.findById(storeId).orElseThrow(
-                () -> {
-                    throw new SoptionsException.BadRequest("store id가 잘못되었습니다");
-                }
+            () -> {
+                throw new SoptionsException.BadRequest("store id가 잘못되었습니다");
+            }
         );
 
         List<Product> productList = productRepository.findByStore(store);
 
         List<ProductDto> products = productList.stream().map((value) -> ProductDto.of(value))
-                .toList();
+            .toList();
 
         return DiscountStoreDetailDto.of(store, products);
     }

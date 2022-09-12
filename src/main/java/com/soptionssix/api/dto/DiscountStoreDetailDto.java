@@ -41,7 +41,7 @@ public class DiscountStoreDetailDto {
     private final List<ProductDto> products;
 
     private DiscountStoreDetailDto(
-            Store store, List<ProductDto> products
+        Store store, List<ProductDto> products
     ) {
         this.id = store.getId();
         this.photo = store.getPhoto();

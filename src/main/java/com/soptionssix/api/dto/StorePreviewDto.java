@@ -31,7 +31,7 @@ public class StorePreviewDto {
     private final boolean hasChallenge;
 
     private StorePreviewDto(
-            Store store
+        Store store
     ) {
         this.id = store.getId();
         this.photo = store.getPhoto();

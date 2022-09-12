@@ -31,7 +31,7 @@ public class ReceiptController {
     @GetMapping("")
     @RequiredJwtToken
     public ResponseEntity<List<ReceiptDto>> getAllReceipt(
-            @RequestHeader(value = "token") final String token
+        @RequestHeader(value = "token") final String token
     ) {
         PayLoad payLoad = this.jwtTokenProvider.decodeJwtPayload(token);
         List<ReceiptDto> receiptDtoList = receiptService.getAllReceiptOf(payLoad.userId());

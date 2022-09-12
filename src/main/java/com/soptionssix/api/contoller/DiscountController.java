@@ -34,7 +34,7 @@ public class DiscountController {
 
     @GetMapping("{storeId}")
     public ResponseEntity<DiscountStoreDetailDto> getStoreDetail(
-            @PathVariable(value = "storeId") final String storeId
+        @PathVariable(value = "storeId") final String storeId
     ) {
         DiscountStoreDetailDto discountStoreDetailDto = discountService.getStoreDetail(storeId);
         return ResponseEntity.ok(discountStoreDetailDto);

@@ -28,7 +28,7 @@ public class ReviewDto {
     private final Long createdAt;
 
     private ReviewDto(
-            Review review
+        Review review
     ) {
         this.id = review.getId();
         this.user = UserDto.of(review.getUser());

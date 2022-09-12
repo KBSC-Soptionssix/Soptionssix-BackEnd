@@ -36,7 +36,7 @@ public class ReceiptDto {
     private final boolean isDonate;
 
     private ReceiptDto(
-            Receipt receipt
+        Receipt receipt
     ) {
         this.id = receipt.getId();
         this.userId = UserDto.of(receipt.getUser()).getId();

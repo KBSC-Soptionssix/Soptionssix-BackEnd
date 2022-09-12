@@ -21,8 +21,8 @@ public class JwtValidator {
 
     @Autowired
     public JwtValidator(
-            JwtTokenProvider jwtTokenProvider,
-            UserService userService
+        JwtTokenProvider jwtTokenProvider,
+        UserService userService
     ) {
         this.jwtTokenProvider = jwtTokenProvider;
         this.userService = userService;
@@ -31,7 +31,7 @@ public class JwtValidator {
     @Before("@annotation(com.soptionssix.api.utils.jwt.RequiredJwtToken)")
     public void validateToken() {
         ServletRequestAttributes requestAttributes =
-                (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpServletRequest request = requestAttributes.getRequest();
         final String token = request.getHeader("token");
         final PayLoad payload = jwtTokenProvider.decodeJwtPayload(token);

@@ -39,7 +39,7 @@ public class StoreDto {
     private final boolean hasChallenge;
 
     private StoreDto(
-            Store store
+        Store store
     ) {
         this.id = store.getId();
         this.photo = store.getPhoto();

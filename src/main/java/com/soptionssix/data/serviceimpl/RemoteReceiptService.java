@@ -25,7 +25,7 @@ public class RemoteReceiptService implements ReceiptService {
     public List<ReceiptDto> getAllReceiptOf(String userId) {
         List<Receipt> receipts = receiptRepository.findByUser(new ObjectId(userId));
         return receipts.stream()
-                .map(ReceiptDto::of)
-                .toList();
+            .map(ReceiptDto::of)
+            .toList();
     }
 }
