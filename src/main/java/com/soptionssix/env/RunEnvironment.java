@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class RunEnvironment {
 
-    private final Environment environment;
     public static final String ENV_PRODUCT = "product";
     public static final String ENV_DEVELOPMENT = "development";
+    private final Environment environment;
 
     @Autowired
     public RunEnvironment(Environment environment) {

@@ -7,5 +7,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface ReceiptRepository extends MongoRepository<Receipt, String> {
 
-    public List<Receipt> findByUser(ObjectId userId);
+    List<Receipt> findByUser(ObjectId userId);
 }

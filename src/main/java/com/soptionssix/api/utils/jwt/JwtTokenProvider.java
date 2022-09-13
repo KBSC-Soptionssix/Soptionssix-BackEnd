@@ -9,14 +9,12 @@ import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +25,7 @@ public class JwtTokenProvider {
     private static final String CLAIM_KEY_OF_USER_ID = "userId";
     private final long tokenValidityOfMillisecond;
 
-    private Key key;
+    private final Key key;
 
     public JwtTokenProvider(
         @Value("${jwt.secret}") String secret,
