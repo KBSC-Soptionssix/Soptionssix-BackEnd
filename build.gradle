@@ -37,6 +37,8 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     // MongoDB spring boot starter
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    // spring boot validator
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
     // AOP Starter
     implementation 'org.springframework.boot:spring-boot-starter-aop:2.7.3'
     // json web token

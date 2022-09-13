@@ -1,11 +1,13 @@
 package com.soptionssix.api.contoller;
 
+import com.soptionssix.api.dto.StoreDetailDto;
 import com.soptionssix.api.dto.StoreDto;
 import com.soptionssix.domain.service.StoreService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,5 +26,13 @@ public class StoreController {
     public ResponseEntity<List<StoreDto>> getAllStore() {
         List<StoreDto> storeDtoList = storeService.getAllStore();
         return ResponseEntity.ok(storeDtoList);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<StoreDetailDto> getStoreDetail(
+        @PathVariable(value = "id") final String id
+    ) {
+        StoreDetailDto storeDetailDto = storeService.getStoreDetail(id);
+        return ResponseEntity.ok(storeDetailDto);
     }
 }

@@ -3,12 +3,15 @@ package com.soptionssix.api.contoller;
 import com.soptionssix.api.dto.ErrorResponse;
 import com.soptionssix.domain.error.ErrorCode;
 import com.soptionssix.domain.error.SoptionsException;
+import com.soptionssix.domain.error.SoptionsException.FieldError;
 import com.soptionssix.env.RunEnvironment;
+import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
@@ -54,6 +57,20 @@ public final class GlobalExceptionHandler extends ResponseEntityExceptionHandler
             exception.getMessage()
         );
         return responseErrorFormat(HttpStatus.INTERNAL_SERVER_ERROR, soptionsException);
+    }
+
+    @Override
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(
+        MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status,
+        WebRequest request
+    ) {
+        final String message = ex.getBindingResult()
+            .getFieldErrors()
+            .stream()
+            .map(error -> "[" + error.getField() + " : " + error.getDefaultMessage() + "];")
+            .collect(Collectors.joining());
+        SoptionsException.FieldError fieldError = new FieldError(message);
+        return responseErrorFormat(HttpStatus.BAD_REQUEST, fieldError);
     }
 
     @Override
