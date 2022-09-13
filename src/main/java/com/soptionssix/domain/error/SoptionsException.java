@@ -21,6 +21,13 @@ public sealed class SoptionsException extends RuntimeException {
         }
     }
 
+    public static final class FieldError extends SoptionsException {
+
+        public FieldError(String message) {
+            super(ErrorCode.BAD_REQUEST, message);
+        }
+    }
+
     // http error status 401
     public static final class Unauthenticated extends SoptionsException {
 
