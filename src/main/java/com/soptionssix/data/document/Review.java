@@ -16,7 +16,7 @@ public class Review {
     @Id
     private String id;
 
-    @DocumentReference(collection = "user", lazy = true)
+    @DocumentReference(collection = "user")
     private final User user;
 
     @DocumentReference(collection = "receipt", lazy = true)
