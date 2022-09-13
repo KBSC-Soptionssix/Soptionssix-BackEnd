@@ -1,7 +1,6 @@
 package com.soptionssix.api.contoller;
 
 import com.soptionssix.api.dto.ProductDto;
-import com.soptionssix.api.dto.StoreDto;
 import com.soptionssix.domain.service.ProductService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
