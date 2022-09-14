@@ -12,6 +12,7 @@ public class SoptionssixApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SoptionssixApplication.class, args);
+        //
     }
 
 }
